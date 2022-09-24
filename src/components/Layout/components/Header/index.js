@@ -1,5 +1,9 @@
 import {
+  faCircleQuestion,
   faCircleXmark,
+  faEarthAsia,
+  faEllipsisVertical,
+  faKeyboard,
   faMagnifyingGlass,
   faSpinner,
 } from "@fortawesome/free-solid-svg-icons";
@@ -12,10 +16,27 @@ import images from "../../../../assets/images";
 import AccountItem from "../../../AccountItem";
 import Button from "../../../Button";
 import { Wrapper as PopperWrapper } from "../../../Popper";
+import Menu from "../../../Popper/Menu";
 // import Upload from "./../../../../pages/Upload/index";
 import styles from "./Header.module.scss";
 
 const cx = classNames.bind(styles);
+
+const MENU_ITEMS = [
+  {
+    icon: <FontAwesomeIcon icon={faEarthAsia} />,
+    title: "English",
+  },
+  {
+    icon: <FontAwesomeIcon icon={faCircleQuestion} />,
+    title: "Feedback and help",
+    to: "/feedback",
+  },
+  {
+    icon: <FontAwesomeIcon icon={faKeyboard} />,
+    title: "Keyboard shortcuts",
+  },
+];
 
 function Header() {
   const [searchResult, setSearchResult] = useState([]);
@@ -64,6 +85,12 @@ function Header() {
         <div className={cx("action")}>
           <Button text>Upload</Button>
           <Button primary>Log in</Button>
+
+          <Menu items={MENU_ITEMS}>
+            <button className={cx("more-btn")}>
+              <FontAwesomeIcon icon={faEllipsisVertical} />
+            </button>
+          </Menu>
         </div>
       </div>
     </header>
