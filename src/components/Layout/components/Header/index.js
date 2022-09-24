@@ -10,7 +10,9 @@ import React, { useEffect, useState } from "react";
 // import "tippy.js/dist/tippy.css";
 import images from "../../../../assets/images";
 import AccountItem from "../../../AccountItem";
+import Button from "../../../Button";
 import { Wrapper as PopperWrapper } from "../../../Popper";
+// import Upload from "./../../../../pages/Upload/index";
 import styles from "./Header.module.scss";
 
 const cx = classNames.bind(styles);
@@ -59,7 +61,10 @@ function Header() {
             </button>
           </div>
         </Tippy>
-        <div className={cx("action")}></div>
+        <div className={cx("action")}>
+          <Button text>Upload</Button>
+          <Button primary>Log in</Button>
+        </div>
       </div>
     </header>
   );
