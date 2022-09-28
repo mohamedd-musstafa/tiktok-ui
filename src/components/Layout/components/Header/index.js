@@ -1,13 +1,11 @@
 import {
   faCircleQuestion,
   faCircleXmark,
-  faCloudUpload,
   faCoins,
   faEarthAsia,
   faEllipsisVertical,
   faGear,
   faKeyboard,
-  faMagnifyingGlass,
   faSignOut,
   faSpinner,
   faUser,
@@ -24,6 +22,13 @@ import { Wrapper as PopperWrapper } from "../../../Popper";
 import Menu from "../../../Popper/Menu";
 // import Upload from "./../../../../pages/Upload/index";
 import "tippy.js/dist/tippy.css";
+import {
+  InboxIcon,
+  MessagesIcon,
+  SearchIcon,
+  UploadIcon,
+} from "../../../Icons";
+import Image from "../../../Image";
 import styles from "./Header.module.scss";
 
 const cx = classNames.bind(styles);
@@ -133,7 +138,7 @@ function Header() {
             <FontAwesomeIcon className={cx("loading")} icon={faSpinner} />
 
             <button className={cx("search-btn")}>
-              <FontAwesomeIcon icon={faMagnifyingGlass} />
+              <SearchIcon />
             </button>
           </div>
         </HeadlessTippy>
@@ -141,9 +146,20 @@ function Header() {
         <div className={cx("action")}>
           {currentUser ? (
             <>
-              <Tippy content="Upload Video" placement="bottom" delay={[0, 200]}>
+              <Tippy content="Upload Video" placement="bottom" delay={[0, 50]}>
                 <button className={cx("action-btn")}>
-                  <FontAwesomeIcon icon={faCloudUpload} />
+                  <UploadIcon />
+                </button>
+              </Tippy>
+              <Tippy delay={[0, 50]} content="Message" placement="bottom">
+                <button className={cx("action-btn")}>
+                  <MessagesIcon />
+                </button>
+              </Tippy>
+              <Tippy delay={[0, 50]} content="Inbox" placement="bottom">
+                <button className={cx("action-btn")}>
+                  <InboxIcon />
+                  <span className={cx("badge")}>12</span>
                 </button>
               </Tippy>
             </>
@@ -159,7 +175,8 @@ function Header() {
             onChange={handleMenuChange}
           >
             {currentUser ? (
-              <img className={cx("user-avatar")} alt="" src="" />
+              // <img className={cx("user-avatar")} alt="" src="" />
+              <Image className={cx("user-avatar")} alt="" src="" />
             ) : (
               <button className={cx("more-btn")}>
                 <FontAwesomeIcon icon={faEllipsisVertical} />

@@ -82,12 +82,15 @@
 }
 
 .search-btn {
-  width: var(--search-button-width);
   height: 100%;
+  width: var(--search-button-width);
   border-top-right-radius: var(--search-border-radius);
   border-bottom-right-radius: var(--search-border-radius);
   font-size: 1.8rem;
   color: rgba(22, 24, 35, 0.34);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   &:hover {
     cursor: pointer;
@@ -109,12 +112,13 @@
 .more-btn {
   font-size: 2rem;
   margin-left: 28px;
-  padding: 4px 8px;
+  padding: 4px 10px;
   background-color: transparent;
   cursor: pointer;
 }
 
 .action-btn {
+  position: relative;
   background-color: transparent;
   font-size: 2.2rem;
   padding: 4px 12px;
@@ -122,8 +126,24 @@
   cursor: pointer;
 }
 
+.badge {
+  position: absolute;
+  display: flex;
+  top: -3px;
+  right: 0px;
+  padding: 0px 6px;
+  height: 2rem;
+  line-height: 2rem;
+  border-radius: 10px;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--white);
+  font-family: "ProximaNova", sans-serif;
+  background-color: var(--primary);
+}
+
 .user-avatar {
-  margin-left: 12px;
+  margin-left: 14px;
   border-radius: 50%;
   object-fit: cover;
   width: 32px;
