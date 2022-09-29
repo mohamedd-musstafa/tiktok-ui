@@ -2,6 +2,7 @@ import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames/bind";
 import React from "react";
+import Image from "../Image";
 import styles from './AccountItem.moddule.scss'
 
 const cx = classNames.bind(styles);
@@ -9,7 +10,7 @@ const cx = classNames.bind(styles);
 function AccountItem() {
   return (
     <div className={cx("wrapper")}>
-      <img src="" alt="" className={cx("avatar")} />
+      <Image src="" alt="" className={cx("avatar")} />
       <div className={cx("info")}>
         <h4 className={cx("name")}>
           <span></span>
