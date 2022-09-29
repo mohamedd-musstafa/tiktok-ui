@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import HeadlessTippy from "@tippyjs/react/headless";
 import classNames from "classnames/bind";
 import React, { useEffect, useRef, useState } from "react";
+import * as searchServices from "../../../../apiServices/searchService";
 import useDebounce from "../../../../hooks/useDebounce";
 import AccountItem from "../../../AccountItem";
 import { SearchIcon } from "../../../Icons";
@@ -27,21 +28,17 @@ function Search() {
       return;
     }
 
-    setLoading(true);
+    const fetchApi = async () => {
+      setLoading(true);
 
-    fetch(
-      `https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(
-        debounced
-      )}&type=less`
-    )
-      .then((res) => res.json())
-      .then((res) => {
-        setSearchResult(res.data);
-        setLoading(false);
-      })
-      .catch(() => {
-        setLoading(false);
-      });
+      const result = await searchServices.search(debounced);
+      setSearchResult(result);
+
+      setLoading(false);
+    };
+
+    fetchApi();
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [debounced]);
 
@@ -81,7 +78,7 @@ function Search() {
           onChange={(e) => setSearchValue(e.target.value)}
           onFocus={() => setShowResult(true)}
         />
-        {!!searchResult && !loading && (
+        {!!searchValue && !loading && (
           <button className={cx("clear")} onClick={handleClear}>
             <FontAwesomeIcon icon={faCircleXmark} />
           </button>
